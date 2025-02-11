@@ -1,0 +1,117 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    width: 100%;
+    height: 150vh;
+    background-image: url('quiznight/images/fondpage.png');
+    background-size: cover;
+}
+/*HAUT DE PAGE*/
+.titrejeu{
+    padding-right: 64%;
+    font-family: "Audiowide", serif;
+    font-weight: 400;
+    font-size: 25px;
+    color: #eaf9ff;
+}
+header{
+    height: fit-content;
+    background-color: #29347D;
+    width: 100%;
+}
+.hautdepage{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 60px;
+    list-style: none;  
+    height: 60px;
+    padding-right: 3%;
+}
+.lien{
+    font-family: "Audiowide", serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #eaf9ff;
+    text-decoration: none;
+}
+
+/*PAGE*/
+section{
+    display: flex;
+    justify-content: center;
+    gap: 4%;
+}   
+.quiz2{
+    width: 19%;
+    height: 56vh;
+    border-radius: 20px;
+    background-color: #29347D;
+    margin-top: 5%;
+}
+.quizserie{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.titrequiz{
+    font-family: "Audiowide", serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #eaf9ff;
+    padding-top: 5%;
+}
+.séries{
+
+}
+.séries2{
+    width: 155px; 
+    height: 215px;
+    margin-top: 8%;
+    border-radius: 20px;
+    transition: 0.2s ease;
+}
+.séries2:hover{
+    box-shadow: #ffffff 0px 0px 20px;
+}
+.titresérie{
+    font-family: "Audiowide", serif;
+    font-weight: 400;
+    font-size: 18px;
+    color:#c93cae;
+    padding-top: 4%;
+}
+.quizcrcc{
+    margin-top: 5%;
+}
+.quizanimal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.animal2{
+    width: 155px; 
+    height: 195px;
+    margin-top: 8%;
+    border-radius: 20px;
+    transition: 0.2s ease;
+}
+.animal2:hover{
+    box-shadow: #ffffff 0px 0px 20px;
+}
+.titreanimal{
+    font-family: "Audiowide", serif;
+    font-weight: 400;
+    font-size: 18px;
+    color:#c93cae;
+    padding-top: 3%;
+}
+.quiz3{
+    width: 19%;
+    height: 52vh;
+    border-radius: 20px;
+    background-color: #29347D;
+    margin-top: 5%;
+}
