@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,7 +32,7 @@
                     QUIZ 1
                 </p>
                 <a href="séries">
-                    <img class="séries2" src="quiznight/images/friends.png" alt="photo série friends">
+                    <img class="séries2" src="images/friends.png" alt="photo série friends">
                 </a>
                 <p class="titresérie">
                     Friends
@@ -47,7 +47,7 @@
                     QUIZ 2
                 </p>
                 <a href="séries">
-                    <img class="séries2" src="quiznight/images/lacasadepapel.png" alt="photo série lacasadepapel">
+                    <img class="séries2" src="images/lacasadepapel.png" alt="photo série lacasadepapel">
                 </a>
                 <p class="titresérie">
                     La casa de papel
@@ -62,7 +62,7 @@
                     QUIZ 3
                 </p>
                 <a href="séries">
-                    <img class="séries2" src="quiznight/images/arcane.png" alt="photo série arcane">
+                    <img class="séries2" src="images/arcane.png" alt="photo série arcane">
                 </a>
                 <p class="titresérie">
                     Arcane
@@ -77,7 +77,7 @@
                     QUIZ 4
                 </p>
                 <a href="séries">
-                    <img class="séries2" src="quiznight/images/prisonbreak.png" alt="photo série prison break">
+                    <img class="séries2" src="images/prisonbreak.png" alt="photo série prison break">
                 </a>
                 <p class="titresérie">
                     Prison Break
@@ -94,7 +94,7 @@
                     QUIZ 5
                 </p>
                 <a href="">
-                    <img class="animal2" src="quiznight/images/chat.png" alt="photo quiz chats">
+                    <img class="animal2" src="images/chat.png" alt="photo quiz chats">
                 </a>
                 <p class="titreanimal">
                     Chats
@@ -109,7 +109,7 @@
                     QUIZ 6
                 </p>
                 <a href="">
-                    <img class="animal2" src="quiznight/images/requin.png" alt="photo quiz  requins">
+                    <img class="animal2" src="images/requin.png" alt="photo quiz  requins">
                 </a>
                 <p class="titreanimal">
                     Requins
@@ -124,7 +124,7 @@
                     QUIZ 7
                 </p>
                 <a href="">
-                    <img class="animal2" src="quiznight/images/calopsitte.png" alt="photo quiz calopsitte">
+                    <img class="animal2" src="images/calopsitte.png" alt="photo quiz calopsitte">
                 </a>
                 <p class="titreanimal">
                     Calopsitte
@@ -139,7 +139,7 @@
                     QUIZ 8
                 </p>
                 <a href="">
-                    <img class="animal2" src="quiznight/images/chien.png" alt="photo quiz chiens">
+                    <img class="animal2" src="images/chien.png" alt="photo quiz chiens">
                 </a>
                 <p class="titreanimal">
                     Chiens
@@ -148,6 +148,13 @@
         </div>
     </section>
 
-
+<!--BAS DE PAGE-->
+    <footer>
+        <div class="réseauxsociaux">
+            <img class="réseaux" src="images/instagram.png" alt="photo logo instagram">
+            <img class="réseaux" src="images/twitter.png" alt="photo logo twitter">
+            <img class="réseaux" src="images/tik-tok.png" alt="photo logo tiktok">
+        </div>
+    </footer>
 </body>
 </html>

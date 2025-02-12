@@ -5,7 +5,7 @@
 body{
     width: 100%;
     height: 150vh;
-    background-image: url('quiznight/images/fondpage.png');
+    background-image: url('images/fondpage.png');
     background-size: cover;
 }
 /*HAUT DE PAGE*/
@@ -114,4 +114,21 @@ section{
     border-radius: 20px;
     background-color: #29347D;
     margin-top: 5%;
+}
+
+/*BAS DE PAGE*/
+footer{
+    height: fit-content;
+    background-color: #29347D;
+    width: 100%;
+}
+.réseauxsociaux{
+    display: flex;
+    justify-content: center;
+    gap: 5%;
+    margin-top: 5%;
+}
+.réseaux{
+    width: 4%;
+    height: 8vh;
 }
