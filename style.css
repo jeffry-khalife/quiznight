@@ -46,7 +46,7 @@ section{
 }   
 .quiz2{
     width: 19%;
-    height: 56vh;
+    height: 52vh;
     border-radius: 20px;
     background-color: #29347D;
     margin-top: 5%;
@@ -81,7 +81,7 @@ section{
     font-weight: 400;
     font-size: 18px;
     color:#c93cae;
-    padding-top: 4%;
+    padding-top: 2%;
 }
 .quizcrcc{
     margin-top: 5%;
@@ -106,11 +106,11 @@ section{
     font-weight: 400;
     font-size: 18px;
     color:#c93cae;
-    padding-top: 3%;
+    padding-top: 2%;
 }
 .quiz3{
     width: 19%;
-    height: 52vh;
+    height: 48vh;
     border-radius: 20px;
     background-color: #29347D;
     margin-top: 5%;
