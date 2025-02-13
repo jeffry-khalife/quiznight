@@ -2,9 +2,9 @@
     class QuizNight {
         private $pdo;
 
-        public function __construct($host, $dbname, $user, $password){
+        public function __construct($host, $quiznight, $root){
             try {
-                $this->pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $password);
+                $this->pdo = new PDO("mysql:host=$host;dbname=$quiznight;charset=utf8", $root, '');
                 $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             } 
             catch (PDOException $e) {
@@ -24,17 +24,6 @@
             $this->pdo = $database->getPdo();
         }
 
-        public function ajouterQuiz($titre, $description, $date_creation){
-            $requete = "INSERT INTO quiz (titre, description, date_creation) VALUES (:titre, :description, :date_creation)";
-            $sql = $this->pdo->prepare($requete);
-            $sql->execute([
-                ':titre' => $titre,
-                ':description' => $description,
-                ':date_creation' => $date_creation
-            ]);
-            return $this->pdo->lastInsertId();
-        }
-
         public function ajouterQuestion($id_quiz, $texte_question){
             $requete = "INSERT INTO question (id_quiz, texte_question) VALUES (:id_quiz, :texte_question)";
             $sql = $this->pdo->prepare($requete);
@@ -43,13 +32,141 @@
                 ':texte_question' => $texte_question
             ]);
         }
+
+        public function getAllQuiz(){
+            $sql = $this->pdo->query("SELECT * FROM quiz");
+            return $sql->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        public function getQuizById($id_quiz){
+            $sql = $this->pdo->prepare("SELECT * FROM quiz WHERE id = :id");
+            $sql->execute([':id' => $id_quiz]);
+            return $sql->fetch(PDO::FETCH_ASSOC);
+        }
+
+        public function getQuestionsByQuiz($id_quiz){
+            $sql = $this->pdo->prepare("SELECT * FROM question WHERE id_quiz = :id_quiz");
+            $sql->execute([':id_quiz' => $id_quiz]);
+            return $sql->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        public function getreponseByQuestion($id_question){
+            $sql = $this->pdo->prepare("SELECT * FROM reponse WHERE id_question = :id_question");
+            $sql->execute([':id_question' => $id_question]);
+            return $sql->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+        public function deleteQuiz($id_quiz){
+            $sql = $this->pdo->prepare("DELETE FROM quiz WHERE id = :id");
+            $sql->execute([':id' => $id_quiz]);
+        }
+
+        public function deleteQuestion($id_question){
+            $sql = $this->pdo->prepare("DELETE FROM question WHERE id = :id");
+            $sql->execute([':id' => $id_question]);
+        }
+
+        public function deleteReponse($id_reponse){
+            $sql = $this->pdo->prepare("DELETE FROM reponse WHERE id = :id");
+            $sql->execute([':id' => $id_reponse]);
+        }
+
+        public function updateQuiz($id_quiz, $titre, $description, $date_creation){
+            $sql = $this->pdo->prepare("UPDATE quiz SET titre = :titre, description = :description, date_creation = :date_creation WHERE id = :id");
+            $sql->execute([
+                ':id' => $id_quiz,
+                ':titre' => $titre,
+                ':description' => $description,
+                ':date_creation' => $date_creation
+            ]);
+        }
+
+        public function updateQuestion($id_question, $texte_question){
+            $sql = $this->pdo->prepare("UPDATE question SET texte_question = :texte_question WHERE id = :id");
+            $sql->execute([
+                ':id' => $id_question,
+                ':texte_question' => $texte_question
+            ]);
+        }
+
+        public function updateReponse($id_reponse, $texte_reponse){
+            $sql = $this->pdo->prepare("UPDATE reponse SET textxe_reponse = :texte_reponse WHERE id = :id");
+            $sql->excute([
+                ':id' => $id_reponse,
+                ':texte_reponse' => $texte_reponse
+            ]);
+        }
     }
 
     $database = new QuizNight("localhost", "quiznight", "root", "");
     $quizManager = new Quiz($database);
 
-?>
+    //traitement du formulaire
+    $message = "";
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["ajouterQuizEtQuestion"])){
+        $titre = $_POST["titre"];
+        $description = $_POST["description"];
+        $date_creation = $_POST["date_creation"];
+        $texte_question = $_POST["texte_question"];
 
+        if (!empty($titre) && !empty($description) && !empty($date_creation) && !empty($texte_question)){
+            $id_quiz = $quizManager->ajouterQuiz($titre, $description, $date_creation);
+            $quizManager->ajouterQuestion($id_quiz, $texte_question);
+            $message = "Quiz et question ajoutés avec succès !";
+        } else {
+            $message = "Veuillez remplir tous les champs.";
+        }
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["modifierQuiz"])){
+        $id_quiz = $_POST["id_quiz"];
+        $titre = $_POST["titre"];
+        $description = $_POST["description"];
+        $date_creation = $_POST["date_creation"];
+
+        if (!empty($titre) && !empty($description) && !empty($date_creation)){
+            $quizManager->updateQuiz($id_quiz, $titre, $description, $date_creation);
+            $message = "Quiz modifié avec succès !";
+        } else {
+            $message = "Veuillez remplir tous les champs.";
+        }
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["modifierQuestion"])){
+        $id_question = $_POST["id_question"];
+        $texte_question = $_POST["texte_question"];
+
+        if (!empty($texte_question)){
+            $quizManager->updateQuestion($id_question, $texte_question);
+            $message = "Question modifiée avec succès !";
+        } else {
+            $message = "Veuillez remplir tous les champs.";
+        }
+    }
+
+    $quizzes = $quizManager->getAllQuiz();
+    $selectedQuiz = null;
+    $questions = [];
+    $reponses = [];
+
+    if (isset($_POST['selectQuiz']) && !empty($_POST['quiz_id'])) {
+        $selectedQuiz = $quizManager->getQuizById($_POST['quiz_id']);
+        $questions = $quizManager->getQuestionsByQuiz($_POST['quiz_id']);
+    }
+
+    if (isset($_POST['selectQuestion']) && !empty($_POST['question_id'])) {
+        $reponses = $quizManager->getreponseByQuestion($_POST['question_id']);
+    }
+
+    // Gestion des actions (modification ou suppression)
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (isset($_POST['deleteQuiz']) && !empty($_POST['id_quiz'])) {
+            $quizManager->deleteQuiz($_POST['id_quiz']);
+        } elseif (isset($_POST['deleteQuestion']) && !empty($_POST['id_question'])) {
+            $quizManager->deleteQuestion($_POST['id_question']);
+        }
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -77,47 +194,126 @@
 
 <!--PAGE-->
 <div class="app">
-<div class="quiz">
-    <h1 class="quizadmin">Gestion du Quiz</h1>
+    <div class="quiz">
+        <h1 class="quizadmin">Gestion du Quiz</h1>
+            
+            <?php if (!empty($message)): ?>
+                <p id="messageerreur"><?php echo $message; ?></p>
+            <?php endif; ?>
+        </form>
+    </div>
 
-    <h5 class="quizadmin">Ajouter un Quiz</h5>
-    <form method="post">
-        <label for="titre">Titre:</label>
-        <input type="text" id="titre" name="titre" required><br><br>
-        
-        <label for="description">Description:</label>
-        <input type="text" id="description" name="description" required><br><br>
-        
-        <label for="date_creation">Date de création:</label>
-        <input type="date" id="date_creation" name="date_creation" required><br><br>
-        
-        <h4>Ajouter une Question</h5>
-        <label for="texte_question">Question:</label>
-        <input type="text" id="texte_question" name="texte_question" required><br><br>
-        
-        <button type="submit" name="ajouterQuizEtQuestion" id=valider>Ajouter</button><br><br>
-        
-        <?php
-        //traitement du formulaire
-            if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["ajouterQuizEtQuestion"])){
-                $titre = $_POST["titre"];
-                $description = $_POST["description"];
-                $date_creation = $_POST["date_creation"];
-                $texte_question = $_POST["texte_question"];
+    <div class="quiz-liste">
+        <h2>Liste des Quiz</h2>
+        <form method="post">
+            <label for="quiz_id">Sélectionner un Quiz:</label>
+            <select name="quiz_id" id="quiz_id">
+                <?php foreach ($quizzes as $quiz) : ?>
+                    <option value="<?= htmlspecialchars($quiz['id']); ?>"><?= htmlspecialchars($quiz['titre']); ?></option>
+                <?php endforeach; ?>
+            </select>
+            <button type="submit" name="selectQuiz">Afficher</button>
+        </form>
 
-                if (!empty($titre) && !empty($description) && !empty($date_creation) && !empty($texte_question)){
-                    $id_quiz = $quizManager->ajouterQuiz($titre, $description, $date_creation);
-                    $quizManager->ajouterQuestion($id_quiz, $texte_question);
-                    echo "<p id='messageerreur'>Quiz et question ajoutés avec succès !</p>";
-                } else {
-                    echo "<p id='messageerreur'>Veuillez remplir tous les champs.</p>";
-                }
-            }
-        ?>
-    </form>
-        </div>
-        </div>
+        <?php if ($selectedQuiz) : ?>
+            <h3>Informations du Quiz</h3>
+            <form method="post">
+                <input type="hidden" name="id_quiz" value="<?= htmlspecialchars($selectedQuiz['id']); ?>">
+                <label for="titre">Titre:</label>
+                <input type="text" id="titre" name="titre" value="<?= htmlspecialchars($selectedQuiz['titre']); ?>" required><br><br>
+                
+                <label for="description">Description:</label>
+                <input type="text" id="description" name="description" value="<?= htmlspecialchars($selectedQuiz['description']); ?>" required><br><br>
+                
+                <label for="date_creation">Date de création:</label>
+                <input type="date" id="date_creation" name="date_creation" value="<?= htmlspecialchars($selectedQuiz['date_creation']); ?>" required><br><br>
+                
+                <button type="submit" name="modifierQuiz">Modifier</button>
+            </form>
+
+            <h3>Questions</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Question</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($questions as $question) : ?>
+                        <tr>
+                            <td><?= htmlspecialchars($question['texte_question']); ?></td>
+                            <td>
+                                <form method="post">
+                                    <input type="hidden" name="id_question" value="<?= htmlspecialchars($question['id']); ?>">
+                                    <button type="submit" name="deleteQuestion" onclick="return confirm('Supprimer cette question ?');">Supprimer</button>
+                                    <button type="submit" name="selectQuestion" value="<?= htmlspecialchars($question['id']); ?>">Modifier</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <?php if (isset($_POST['selectQuestion']) && $_POST['selectQuestion'] == $question['id']) : ?>
+                            <tr>
+                                <td colspan="2">
+                                    <form method="post">
+                                        <input type="hidden" name="id_question" value="<?= htmlspecialchars($question['id']); ?>">
+                                        <label for="texte_question">Question:</label>
+                                        <input type="text" id="texte_question" name="texte_question" value="<?= htmlspecialchars($question['texte_question']); ?>" required><br><br>
+                                        <button type="submit" name="modifierQuestion">Modifier</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+
+            <h3>Réponses</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Réponses</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($reponses as $reponse) : ?>
+                        <tr>
+                            <td><?= htmlspecialchars($reponse['texte_reponse']); ?></td>
+                            <td>
+                                <form method="post">
+                                    <input type="hidden" name="id_question" value="<?= htmlspecialchars($reponse['id']); ?>">
+                                    <button type="submit" name="deleteQuestion" onclick="return confirm('Supprimer cette reponse ?');">Supprimer</button>
+                                    <button type="submit" name="selectQuestion" value="<?= htmlspecialchars($reponse['id']); ?>">Modifier</button>
+                                </form>
+                            </td>
+                        </tr>
+                        <?php if (isset($_POST['selectReponse']) && $_POST['selectReponse'] == $reponse['id']) : ?>
+                            <tr>
+                                <td colspan="2">
+                                    <form method="post">
+                                        <input type="hidden" name="id_question" value="<?= htmlspecialchars($reponse['id']); ?>">
+                                        <label for="texte_question">Question:</label>
+                                        <input type="text" id="texte_reponse" name="texte_question" value="<?= htmlspecialchars($reponse['texte_reponse']); ?>" required><br><br>
+                                        <button type="submit" name="modifierReponse">Modifier</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+
+        <?php endif; ?>
+    </div>
+</div>
+
+<!--BAS DE PAGE-->
+<footer>
+    <div class="réseauxsociaux">
+        <img class="réseaux" src="images/instagram.png" alt="photo logo instagram">
+        <img class="réseaux" src="images/twitter.png" alt="photo logo twitter">
+        <img class="réseaux" src="images/tik-tok.png" alt="photo logo tiktok">
+    </div>
+</footer>
 </body>
 </html>
-
-
