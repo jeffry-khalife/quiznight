@@ -76,6 +76,8 @@
     </header>
 
 <!--PAGE-->
+<div class="app">
+<div class="quiz">
     <h1 class="quizadmin">Gestion du Quiz</h1>
 
     <h5 class="quizadmin">Ajouter un Quiz</h5>
@@ -93,13 +95,7 @@
         <label for="texte_question">Question:</label>
         <input type="text" id="texte_question" name="texte_question" required><br><br>
         
-        <label for="texte_question">Question:</label>
-        <input type="text" id="texte_question" name="texte_question" required><br><br>
-
-        <label for="texte_question">Question:</label>
-        <input type="text" id="texte_question" name="texte_question" required><br><br>
-        
-        <button type="submit" name="ajouterQuizEtQuestion">Ajouter</button><br><br>
+        <button type="submit" name="ajouterQuizEtQuestion" id=valider>Ajouter</button><br><br>
         
         <?php
         //traitement du formulaire
@@ -119,9 +115,9 @@
             }
         ?>
     </form>
-
-
-
+        </div>
+        </div>
 </body>
 </html>
+
 

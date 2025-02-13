@@ -31,7 +31,7 @@
                 <p class="titrequiz">
                     QUIZ 1
                 </p>
-                <a href="séries">
+                <a href="quizz.php?id_quiz=2">
                     <img class="séries2" src="images/friends.png" alt="photo série friends">
                 </a>
                 <p class="titresérie">
@@ -46,7 +46,7 @@
                 <p class="titrequiz">
                     QUIZ 2
                 </p>
-                <a href="séries">
+                <a href="quizz.php?id_quiz=3">
                     <img class="séries2" src="images/lacasadepapel.png" alt="photo série lacasadepapel">
                 </a>
                 <p class="titresérie">
@@ -61,7 +61,7 @@
                 <p class="titrequiz">
                     QUIZ 3
                 </p>
-                <a href="séries">
+                <a href="quizz.php?id_quiz=1">
                     <img class="séries2" src="images/arcane.png" alt="photo série arcane">
                 </a>
                 <p class="titresérie">
@@ -76,7 +76,7 @@
                 <p class="titrequiz">
                     QUIZ 4
                 </p>
-                <a href="séries">
+                <a href="quizz.php?id_quiz=4">
                     <img class="séries2" src="images/prisonbreak.png" alt="photo série prison break">
                 </a>
                 <p class="titresérie">
@@ -93,7 +93,7 @@
                 <p class="titrequiz">
                     QUIZ 5
                 </p>
-                <a href="">
+                <a href="quizz.php?id_quiz=8">
                     <img class="animal2" src="images/chat.png" alt="photo quiz chats">
                 </a>
                 <p class="titreanimal">
@@ -108,8 +108,8 @@
                 <p class="titrequiz">
                     QUIZ 6
                 </p>
-                <a href="">
-                    <img class="animal2" src="images/requin.png" alt="photo quiz  requins">
+                <a href="quizz.php?id_quiz=6">
+                    <img class="animal2" src="images/requin.png" alt="photo quiz requins">
                 </a>
                 <p class="titreanimal">
                     Requins
@@ -123,7 +123,7 @@
                 <p class="titrequiz">
                     QUIZ 7
                 </p>
-                <a href="">
+                <a href="quizz.php?id_quiz=5">
                     <img class="animal2" src="images/calopsitte.png" alt="photo quiz calopsitte">
                 </a>
                 <p class="titreanimal">
@@ -138,7 +138,7 @@
                 <p class="titrequiz">
                     QUIZ 8
                 </p>
-                <a href="">
+                <a href="quizz.php?id_quiz=7">
                     <img class="animal2" src="images/chien.png" alt="photo quiz chiens">
                 </a>
                 <p class="titreanimal">
