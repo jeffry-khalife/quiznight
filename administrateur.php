@@ -200,9 +200,8 @@
     <header>
         <nav>
             <ul class="hautdepage">
-                <p class="titrejeu">Quiznight</p>
-                <li><a class="lien" href="index.php">Accueil</a></li>
-                <li><a class="lien" href="">Connexion</a></li>
+                <li><a class="lien" href="index.php">Quiznight</a></li>
+                <li><a class="lien" href="logout.php">Deconnexion</a></li>
             </ul>
         </nav>
     </header>

@@ -16,9 +16,8 @@
     <header>
         <nav>
             <ul class="hautdepage">
-                <p class="titrejeu">Quiznight</p>
-                <li><a class="lien" href="index.php">Accueil</a></li>
-                <li><a class="lien" href="">Connexion</a></li>
+                <li><a class="lien" href="index.php">Quiznight</a></li>
+                <li><a class="lien" href="login.php">Connexion</a></li>
             </ul>
         </nav>
     </header>
@@ -147,14 +146,5 @@
             </div>
         </div>
     </section>
-
-<!--BAS DE PAGE-->
-    <footer>
-        <div class="réseauxsociaux">
-            <img class="réseaux" src="images/instagram.png" alt="photo logo instagram">
-            <img class="réseaux" src="images/twitter.png" alt="photo logo twitter">
-            <img class="réseaux" src="images/tik-tok.png" alt="photo logo tiktok">
-        </div>
-    </footer>
 </body>
 </html>

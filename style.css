@@ -65,9 +65,6 @@ section{
     color: #eaf9ff;
     padding-top: 5%;
 }
-.séries{
-
-}
 .séries2{
     width: 155px; 
     height: 215px;
@@ -116,21 +113,4 @@ section{
     border-radius: 20px;
     background-color: #29347D;
     margin-top: 5%;
-}
-
-/*BAS DE PAGE*/
-footer{
-    height: fit-content;
-    background-color: #29347D;
-    width: 100%;
-}
-.réseauxsociaux{
-    display: flex;
-    justify-content: center;
-    gap: 5%;
-    margin-top: 5%;
-}
-.réseaux{
-    width: 4%;
-    height: 8vh;
 }

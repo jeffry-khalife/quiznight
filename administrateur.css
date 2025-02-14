@@ -276,21 +276,8 @@ input[type="nom_utilisateur"], input[type="password"] {
 #messageerreur{
     font-size: 18px;
 }
-
-
-/*BAS DE PAGE*/
-footer{
-    height: fit-content;
-    background-color: #29347D;
-    width: 100%;
-}
-.réseauxsociaux{
-    display: flex;
-    justify-content: center;
-    gap: 5%;
-    margin-top: 5%;
-}
-.réseaux{
-    width: 4%;
-    height: 8vh;
+@media (max-width: 600px) {
+    .app { 
+        width: 80%;
+    }
 }
