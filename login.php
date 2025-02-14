@@ -37,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Connexion</title>
     <link rel='stylesheet' href='style1.css'>
     <link rel='stylesheet' href='style2.css'>
+    <link href='https://fonts.googleapis.com/css2?family=Audiowide&family=Tektur:wght@400..900&display=swap' rel='stylesheet'>
 </head>
 
 <header>
