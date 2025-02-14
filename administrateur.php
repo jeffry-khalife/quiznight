@@ -211,85 +211,85 @@
 <div class="app">
     <div class="quiz">
         <h1 class="quizadmin">Gestion du Quiz</h1>
-            
         <?php if (!empty($message)): ?>
             <p id="messageerreur"><?php echo $message; ?></p>
         <?php endif; ?>
 
         <h2>Ajouter un nouveau Quiz et une Question</h2>
-        <form method="post">
-            <label for="titre">Titre du Quiz:</label>
-            <input type="text" id="titre" name="titre" required><br><br>
+        <form class="ajoutquiz" method="post">
+            <label class="titrequiz" for="titre">Titre du Quiz:</label>
+            <input class="titrequiz2" type="text" id="titre" name="titre" required><br><br>
             
-            <label for="description">Description:</label>
+            <label class="desques" for="description">Description:</label>
             <input type="text" id="description" name="description" class="description-input" required><br><br>
             
-            <label for="date_creation">Date de création:</label>
-            <input type="date" id="date_creation" name="date_creation" required><br><br>
-            
-            <label for="texte_question">Question:</label>
+            <label class="desques" for="texte_question">Question:</label>
             <input type="text" id="texte_question" name="texte_question" class="question-input" required><br><br>
+
+            <label class="desques" for="date_creation">Date de création:</label>
+            <input class="datecréation" type="date" id="date_creation" name="date_creation" required><br>
             
-            <button type="submit" name="ajouterQuizEtQuestion">Ajouter Quiz et Question</button>
+            <button class="ajouter" type="submit" name="ajouterQuizEtQuestion">Ajouter Quiz et Question</button>
         </form>
     </div>
 
     <div class="quiz-liste">
-        <h2>Liste des Quiz</h2>
-        <form method="post">
-            <label for="quiz_id">Sélectionner un Quiz:</label>
-            <select name="quiz_id" id="quiz_id">
+        <h2 class="listequiz">Liste des Quiz</h2>
+        <form class="ajoutquiz" method="post">
+            <label class="selectionnerunquiz" for="quiz_id">Sélectionner un Quiz:</label>
+            <select class="nomquiz" name="quiz_id" id="quiz_id">
                 <?php foreach ($quizzes as $quiz) : ?>
                     <option value="<?= htmlspecialchars($quiz['id']); ?>"><?= htmlspecialchars($quiz['titre']); ?></option>
                 <?php endforeach; ?>
             </select>
-            <button type="submit" name="selectQuiz">Afficher</button>
+            <button class="afficher" type="submit" name="selectQuiz">Afficher</button>
         </form>
 
         <?php if ($selectedQuiz) : ?>
-            <h3>Informations du Quiz</h3>
-            <form method="post">
+            <h3 class="infoquiz">Informations du Quiz</h3>
+            <form class="ajoutquiz" method="post">
                 <input type="hidden" name="id_quiz" value="<?= htmlspecialchars($selectedQuiz['id']); ?>">
-                <label for="titre">Titre:</label>
-                <input type="text" id="titre" name="titre" value="<?= htmlspecialchars($selectedQuiz['titre']); ?>" required><br><br>
+
+                <label class="titrequiz" for="titre">Titre:</label>
+                <input class="titrequiz2"type="text" id="titre" name="titre" value="<?= htmlspecialchars($selectedQuiz['titre']); ?>" required><br><br>
                 
-                <label for="description">Description:</label>
+                <label class="desques" for="description">Description:</label>
                 <input type="text" id="description" name="description"  class="description-input" value="<?= htmlspecialchars($selectedQuiz['description']); ?>" required><br><br>
                 
-                <label for="date_creation">Date de création:</label>
-                <input type="date" id="date_creation" name="date_creation" value="<?= htmlspecialchars($selectedQuiz['date_creation']); ?>" required><br><br>
+                <label class="desques" for="date_creation">Date de création:</label>
+                <input class="datecréation" type="date" id="date_creation" name="date_creation" value="<?= htmlspecialchars($selectedQuiz['date_creation']); ?>" required><br><br>
                 
-                <button type="submit" name="modifierQuiz">Modifier</button>
+                <button class="modifier" type="submit" name="modifierQuiz">Modifier</button>
             </form>
 
-            <h3>Questions</h3>
+            <h3 class="questions-réponses">Questions/Réponses</h3>
             <table>
-                <thead>
+                <thead class="q-a">
                     <tr>
-                        <th>Question</th>
-                        <th>Actions</th>
+                        <th class="q-a">Questions/Réponses</th>
+                        <th class="q-a">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($questions as $question) : ?>
                         <tr>
-                            <td><?= htmlspecialchars($question['texte_question']); ?></td>
-                            <td>
+                            <td class="q-a-quiz"><?= htmlspecialchars($question['texte_question']); ?></td>
+                            <td class="fsfwd"><br>
                                 <form method="post">
                                     <input type="hidden" name="id_question" value="<?= htmlspecialchars($question['id']); ?>">
-                                    <button type="submit" name="deleteQuestion" onclick="return confirm('Supprimer cette question ?');">Supprimer</button>
-                                    <button type="submit" name="selectQuestion" value="<?= htmlspecialchars($question['id']); ?>">Modifier</button>
+                                    <button class="s-m" type="submit" name="deleteQuestion" onclick="return confirm('Supprimer cette question ?');">Supprimer</button>
+                                    <button class="s-m" type="submit" name="selectQuestion" value="<?= htmlspecialchars($question['id']); ?>">Modifier</button>
                                 </form>
                             </td>
                         </tr>
                         <?php if (isset($_POST['selectQuestion']) && $_POST['selectQuestion'] == $question['id']) : ?>
                             <tr>
                                 <td colspan="2">
-                                    <form method="post">
+                                    <form class="ajoutquiz" method="post">
                                         <input type="hidden" name="id_question" value="<?= htmlspecialchars($question['id']); ?>">
                                         <label for="texte_question">Question:</label>
                                         <input type="text" id="texte_question" name="texte_question" value="<?= htmlspecialchars($question['texte_question']); ?>" required><br><br>
-                                        <button type="submit" name="modifierQuestion">Modifier</button>
+                                        <button class="s-m" type="submit" name="modifierQuestion">Modifier</button>
                                     </form>
                                 </td>
                             </tr>
@@ -302,8 +302,8 @@
                                 <td>
                                     <form method="post">
                                         <input type="hidden" name="id_reponse" value="<?= htmlspecialchars($reponse['id']); ?>">
-                                        <button type="submit" name="deleteReponse" onclick="return confirm('Supprimer cette réponse ?');">Supprimer</button>
-                                        <button type="submit" name="selectReponse" value="<?= htmlspecialchars($reponse['id']); ?>">Modifier</button>
+                                        <button class="s-m" class="" type="submit" name="deleteReponse" onclick="return confirm('Supprimer cette réponse ?');">Supprimer</button>
+                                        <button class="s-m" type="submit" name="selectReponse" value="<?= htmlspecialchars($reponse['id']); ?>">Modifier</button>
                                     </form>
                                 </td>
                             </tr>
@@ -314,7 +314,7 @@
                                             <input type="hidden" name="id_reponse" value="<?= htmlspecialchars($reponse['id']); ?>">
                                             <label for="texte_reponse">Réponse:</label>
                                             <input type="text" id="texte_reponse" name="texte_reponse" value="<?= htmlspecialchars($reponse['texte_reponse']); ?>" required><br><br>
-                                            <button type="submit" name="modifierReponse">Modifier</button>
+                                            <button class="s-m" type="submit" name="modifierReponse">Modifier</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -326,14 +326,5 @@
         <?php endif; ?>
     </div>
 </div>
-
-<!--BAS DE PAGE-->
-<footer>
-    <div class="réseauxsociaux">
-        <img class="réseaux" src="images/instagram.png" alt="photo logo instagram">
-        <img class="réseaux" src="images/twitter.png" alt="photo logo twitter">
-        <img class="réseaux" src="images/tik-tok.png" alt="photo logo tiktok">
-    </div>
-</footer>
 </body>
 </html>

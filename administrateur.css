@@ -39,13 +39,126 @@ header{
 
 /*PAGE*/
 .quizadmin{
-    font-size: 18px;
+    font-size: 30px;
+    border-bottom: 1px solid black;
+}
+.quiz h2 {
+    font-size: 20px;
+    color: black;
+    font-weight: 300;
+    margin-top: 6%;
 }
 .description-input, .question-input {
+    margin-top: 1%;
     width: 65%;
-    height: 40px;
+    height: 3vh;
     padding: 10px;
-    box-sizing: border-box;
+    text-align: center;
+    border-radius: 10px;
+    border: solid 5px #c93cae;
+}
+.ajoutquiz{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.titrequiz{
+    text-decoration: underline;
+    margin-top: 6%;
+}
+.titrequiz2{
+    margin-top: 1%;
+    width: 65%;
+    height: 3vh;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    border: solid 5px #c93cae;
+}
+.desques{
+    text-decoration: underline;
+}
+.datecréation{
+    width: 25%;
+    height: 5vh;
+    text-align: center;
+    margin-top: 1%;
+    border-radius: 10px;
+    border: solid 5px #c93cae;
+}
+.ajouter{
+    width: 35%;
+    height: 5vh;
+    text-align: center;
+    margin-top: 1%;
+    border-radius: 10px;
+    border: solid 5px #c93cae;
+}
+.listequiz{
+    font-size: 25px;
+    font-weight: 300;
+    margin-top: 6%;
+}
+.selectionnerunquiz{
+    margin-top: 3%;
+}
+.nomquiz{
+    width: 25%;
+    height: 5vh;
+    text-align: center;
+    margin-top: 1%;
+    border-radius: 10px;
+    border: solid 5px #c93cae;
+}
+.afficher{
+    width: 25%;
+    height: 5vh;
+    text-align: center;
+    margin-top: 3%;
+    border-radius: 10px;
+    border: solid 5px #c93cae;
+}
+.infoquiz{
+    font-size: 35px;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    margin-top: 8%;
+}
+.modifier{
+    width: 10%;
+    height: 5vh;
+    text-align: center;
+    border-radius: 10px;
+    border: solid 5px #c93cae;
+}
+.questions-réponses{
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    margin-top: 8%;
+    font-size: 30px;
+    margin-bottom: 4%;
+}
+.q-a{
+    font-size: 20px;
+    margin-bottom: 10%;
+}
+.q-a-quiz{
+    font-size: 14px;
+    text-decoration: underline;
+}
+.ajoutquiz2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.fsfwd{
+    font-size: 1px;
+}
+.s-m{
+    font-family: "Audiowide", serif;
+    font-size: 10px;
+    border-radius: 10px;
+    border: solid 5px #c93cae;
 }
 .app {
     background-color: rgba(255, 255, 255, 0.4);
@@ -53,30 +166,13 @@ header{
     margin: 100px auto 0;
     border-radius: 10px;
     padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .app h1 {
-    font-size: 25px;
     text-align: center;
-    border-bottom: 1px solid black;
     padding-bottom: 20px;
-}
-.app h3 {
-    font-size: 40px;
-    text-align: center;
-    font-weight: 600;
-    border-bottom: 1px solid black;
-    padding-bottom: 20px;
-}
-.app p {
-    font-size: 17px;
-}
-.quiz {
-    padding: 5px 0;
-}
-.quiz h2 {
-    font-size: 18px;
-    color: black;
-    font-weight: 600;
 }
 .btn1 {
     background-color: rgb(255, 255, 255, 0.4);
