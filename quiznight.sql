@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 12 fév. 2025 à 10:08
+-- Généré le : ven. 14 fév. 2025 à 13:02
 -- Version du serveur : 9.1.0
 -- Version de PHP : 8.3.14
 
@@ -37,7 +37,17 @@ CREATE TABLE IF NOT EXISTS `administrateur` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `nom_utilisateur` (`nom_utilisateur`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `administrateur`
+--
+
+INSERT INTO `administrateur` (`id`, `nom_utilisateur`, `mot_de_passe`, `email`, `date_creation`) VALUES
+(1, 'jeffry', '$2y$10$jtqr0En6F8tdOky6IKQPDe5WywRiMpkmCszS3j5b09r3ugPklTLO.', 'jeffry@gmail.com', '2025-02-14 08:42:18'),
+(2, 'magali', '$2y$10$K0nttvLOkoGcKbhPOe/d4uFKHRKKT5.n6lBmPnWHpCqHHcBaU2i3S', 'magali@gmail.com', '2025-02-14 14:01:48'),
+(3, 'anna', '$2y$10$ExAQ2fw/5kj2TRjF40X9/OhwKtmIMG5uMmQkPWZL0be2w6OksbPly', 'anna@gmail.com', '2025-02-14 14:01:57'),
+(4, 'emilie', '$2y$10$eSrdOHsDWTzZbe8HgSE2V.F7FrQ8gwEFR2A/XVFdBesUKh84j1Yk6', 'emilie@gmail.com', '2025-02-14 14:02:09');
 
 -- --------------------------------------------------------
 
@@ -84,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `question` (
   `type_question` enum('choix_multiple','vrai_faux') DEFAULT 'choix_multiple',
   PRIMARY KEY (`id`),
   KEY `id_quiz` (`id_quiz`)
-) ENGINE=MyISAM AUTO_INCREMENT=81 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=82 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `question`
@@ -170,7 +180,8 @@ INSERT INTO `question` (`id`, `texte_question`, `id_quiz`, `type_question`) VALU
 (77, '7. Quelle partie du corps des requins repousse après avoir été endommagée ?', 6, 'choix_multiple'),
 (78, '8. Comment s\'appelle le phénomène où un requin attaque un humain par curiosité ?', 6, 'choix_multiple'),
 (79, '9. Quelle espèce de requin est bioluminescent ?', 6, 'choix_multiple'),
-(80, '10. Quel est le plus petit requin du monde ?', 6, 'choix_multiple');
+(80, '10. Quel est le plus petit requin du monde ?', 6, 'choix_multiple'),
+(81, 'quiz?', 9, 'choix_multiple');
 
 -- --------------------------------------------------------
 
@@ -188,7 +199,7 @@ CREATE TABLE IF NOT EXISTS `quiz` (
   `est_public` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `id_administrateur` (`id_administrateur`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `quiz`
@@ -202,7 +213,8 @@ INSERT INTO `quiz` (`id`, `titre`, `description`, `date_creation`, `id_administr
 (5, 'Calopsitte', 'La Calopsitte élégante ou simplement Calopsitte, aussi appelée cockatiel ou encore Perruche nymphique, est une espèce d\'oiseaux australienne. C\'est la seule espèce du genre Nymphicus. De taille similaire à celle d\'un petit pigeon, la calopsitte est souvent utilisée comme oiseau de compagnie, bien qu\'assez bruyant. ', '2025-02-11 13:53:10', NULL, 1),
 (6, 'Requin', 'Les requins, squales ou sélachimorphes forment un super-ordre des poissons cartilagineux, possédant cinq à sept fentes branchiales sur les côtés de la tête et les nageoires pectorales qui ne sont pas fusionnées à la tête. Ils sont présents dans tous les océans du globe et dans certains grands fleuves', '2025-02-11 13:53:10', NULL, 1),
 (7, 'Chien', 'Le chien est un mammifère de la famille des canidés. C\'est la première espèce animale à avoir été domestiquée par l\'homme dans le but de la chasse. ', '2025-02-11 13:59:14', NULL, 1),
-(8, 'Chat', 'Le chat domestique est l’un des principaux animaux de compagnie et compte aujourd’hui une cinquantaine de races différentes reconnues par les instances de certification. ', '2025-02-11 13:59:14', NULL, 1);
+(8, 'Chat', 'Le chat domestique est l’un des principaux animaux de compagnie et compte aujourd’hui une cinquantaine de races différentes reconnues par les instances de certification. ', '2025-02-11 13:59:14', NULL, 1),
+(9, 'quiz', 'quiz', '2025-02-14 00:00:00', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -422,7 +434,7 @@ INSERT INTO `reponse` (`id`, `texte_reponse`, `est_correcte`, `id_question`) VAL
 (195, 'C/ Ciao Amore', 0, 65),
 (196, 'A/ Enseignant', 0, 66),
 (197, 'B/ Ingénieur', 0, 66),
-(198, 'C/ Aucun, il préparait le braquage depuis toujours', 0, 66),
+(198, 'C/ Aucun, il préparait le braquage depuis toujours', 1, 66),
 (199, 'A/ Tokyo', 0, 67),
 (200, 'B/ Denver', 0, 67),
 (201, 'C/ Le Professeur', 1, 67),
