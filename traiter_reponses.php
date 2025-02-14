@@ -33,7 +33,19 @@ echo "<!DOCTYPE html>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Résultats du Quiz - " . $quiz->getTitle() . "</title>
     <link rel='stylesheet' href='style.css'>
+    <link rel='stylesheet' href='style2.css'>
+
 </head>
+
+<header>
+        <nav>
+            <ul class='hautdepage'>
+                <p class='titrejeu'></p>
+                <li><a class='lien' href='index.php'>Quiznight</a></li>
+                <li><a class='lien' href='login.php'>Connexion</a></li>
+            </ul>
+        </nav>
+    </header>
 <body>
 
 <div class='app'>
@@ -98,7 +110,7 @@ echo "<div class='score'>";
 echo "<h2>Vous avez obtenu " . $score . " bonnes réponses sur " . count($questions) . " !</h2>";
 echo "</div>";
 
-echo "<a href='quiz.php?id_quiz=" . $id_quiz . "' id='next-btn'>Rejouer</a>";
+echo "<a href='quizz.php?id_quiz=" . $id_quiz . "' id='next-btn'>Rejouer</a>";
 echo "<a href='index.php"  . "' id='next-btn'>Autres Quiz</a>";
 echo "</div></body></html>";
 ?>
