@@ -21,7 +21,20 @@ echo "<!DOCTYPE html>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>Quiz - " . $quiz->getTitle() . "</title>
     <link rel='stylesheet' href='style.css'>
+    <link rel='stylesheet' href='style2.css'>
+
 </head>
+
+<header>
+        <nav>
+            <ul class='hautdepage'>
+                <p class='titrejeu'></p>
+                <li><a class='lien' href='index.php'>Quiznight</a></li>
+                <li><a class='lien' href='login.php'>Connexion</a></li>
+            </ul>
+        </nav>
+    </header>
+
 <body>
 
 <div class='app'>
@@ -50,5 +63,12 @@ echo "<button type='submit' id='next-btn'>Valider</button>
 </div>
 
 </body>
+    <footer>
+        <div class='réseauxsociaux'>
+            <img class='réseaux' src='img/instagram.png' alt='photo logo instagram'>
+            <img class='réseaux' src='img/twitter.png' alt='photo logo twitter'>
+            <img class='réseaux' src='img/tik-tok.png' alt='photo logo tiktok'>
+        </div>
+    </footer>
 </html>";
 ?>
