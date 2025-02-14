@@ -41,6 +41,12 @@ header{
 .quizadmin{
     font-size: 18px;
 }
+.description-input, .question-input {
+    width: 65%;
+    height: 40px;
+    padding: 10px;
+    box-sizing: border-box;
+}
 .app {
     background-color: rgba(255, 255, 255, 0.4);
     width: 85%;
@@ -48,14 +54,12 @@ header{
     border-radius: 10px;
     padding: 30px;
 }
-
 .app h1 {
     font-size: 25px;
     text-align: center;
     border-bottom: 1px solid black;
     padding-bottom: 20px;
 }
-
 .app h3 {
     font-size: 40px;
     text-align: center;
@@ -63,22 +67,17 @@ header{
     border-bottom: 1px solid black;
     padding-bottom: 20px;
 }
-
-
 .app p {
     font-size: 17px;
 }
 .quiz {
     padding: 5px 0;
 }
-
-
 .quiz h2 {
     font-size: 18px;
     color: black;
     font-weight: 600;
 }
-
 .btn1 {
     background-color: rgb(255, 255, 255, 0.4);
     color: black; 
@@ -91,33 +90,27 @@ header{
     cursor: pointer;
     transition: all 0.3s;
 }
-
 .btn1:hover {
     background-color: grey;
     color: black;
 
 }
-
 .correct-answer {
     background-color: green;
     color: white;
     border: 1px solid darkgreen;
 }
-
 .correct-answer:hover {
     background-color: darkgreen;
 }
-
 .wrong-answer {
     background-color: red;
     color: white;
     border: 1px solid darkred;
 }
-
 .wrong-answer:hover {
     background-color: darkred;
 }
-
 #next-btn {
     background-color: #ff37ea;
     color: #fff;
@@ -129,7 +122,6 @@ header{
     display: block;
     text-align: center;
 }
-
 #valider {
     background-color: #ff37ea;
     color: #fff;
@@ -141,8 +133,6 @@ header{
     display: block;
     text-align: center;
 }
-
-
 .btn-correct {
     background-color: #4CAF50; 
     color: white;
@@ -154,7 +144,6 @@ header{
     border-radius: 7px;
     cursor: pointer;
 }
-
 .btn-incorrect {
     background-color: #f44336; 
     color: white;
@@ -166,12 +155,10 @@ header{
     border-radius: 7px;
     cursor: pointer;
 }
-
 .btn-correct:hover,
 .btn-incorrect:hover {
     opacity: 0.7;
 }
-
 .score h2 {
     font-size: 20px;
     color: black;
@@ -179,11 +166,9 @@ header{
     margin-top: 20px;
     text-align: center;
 }
-
 form {
     text-align: center;
 }
-
 input[type="nom_utilisateur"], input[type="password"] {
     width: 100%;
     padding: 10px;
